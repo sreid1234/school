@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 
 using namespace std;
@@ -9,22 +8,24 @@ int main () {
 
 
 
-	int data [15];
-	int i, j;
+	int data [16];
+	int i, j, k, temp, currentIndex = 0;
 
 	cout<<"Type 16 different numbers [-1 to quit]: " << endl;
-	for (i=0; i < 16; i += 2) {
+	for (i=0; i < 8; i += 1) {
 		cout<<"Enter your first value ";
 		cin>> j;
-		data[i] = j;
-
-
-
+		data[currentIndex] = j;
+		cout<<"Enter your index ";
+		temp = currentIndex; 
+		cin>> currentIndex;
+		data[temp + 1] = currentIndex;
 	}
+
 
 	
 
-	printArray(data, 15);
+	printArray(data, 16);
 
 	//cin>> data;
 	//cout<<data;
@@ -36,13 +37,14 @@ int main () {
 void printArray(int array[], int length)
 	{
 	cout << "[";
-	for(int pos=0; pos < length; pos++)
-	{
-		if(pos < length-1)
-			cout << array[pos] << ", ";
-		else
-			cout << array[pos];
+	int currentPos = 1;
+	while (array[currentPos] != -1) {
+		cout<<array[currentPos-1]<<",";
+		currentPos = array[currentPos] +1;
+		
 	}
-	cout << "]" << endl;
+	cout << array[currentPos-1] << "]" << endl;
 }
+
+
 
